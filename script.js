@@ -1,10 +1,9 @@
 fetch('data.json')
-  .then(res => res.json())
+  .then(response => response.json())
   .then(data => {
     const list = document.getElementById('list');
-    data.forEach(profile => {
-      const div = document.createElement('div');
-      div.textContent = `${profile.name} - ${profile.email}`;
-      list.appendChild(div);
+    list.innerHTML = '';
+    data.forEach(customer => {
+      list.innerHTML += `<p>${customer.Givenname} ${customer.Surname} - ${customer.TelephoneCountryCode} ${customer.Telephone}</p>`;
     });
   });
