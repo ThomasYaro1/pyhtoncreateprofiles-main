@@ -1,3 +1,5 @@
+import json
+
 def test_json_properties():
     with open('data.json', encoding='utf-8') as jsonfile:
         data = json.load(jsonfile)
