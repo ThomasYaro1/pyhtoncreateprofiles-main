@@ -22,16 +22,18 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements.txt
 
-    - name: Run generate and convert scripts
-      run: |
-        python generate.py
-        python csvtojson.py
+   
+    - name: Convert CSV to JSON
+      run: python csvtojson.py
 
     - name: Run tests
-      run: pytest
+      run: |
+        pytest
+        # Extra test: Kontrollera att data.json har 900+ rader
+        python -c "import json; data = json.load(open('data.json')); assert len(data) >= 900, 'JSON-filen har för få rader!'"
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./
+        publish_dir: ./  
