@@ -9,7 +9,7 @@ const showTable = function(moviesArray){
 
 } 
 
-fetch('./data.json')
+fetch('https://thomasyaro1.github.io/pyhtoncreateprofiles-main/data.json')
     .then((response) => response.json())
     .then((json) => {
         showTable(json)
