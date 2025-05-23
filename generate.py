@@ -133,7 +133,8 @@ with open('profiles1.csv', 'w', newline='',encoding='utf-8') as file:
         telephoneCountryCode = getCallingCode(current)
         countryCode = getCountryCode(current)
         country = getCountry(current)
-        birthDay = fake.date_between_dates(datetime.date(1940,1,1),datetime.date(2001,1,1))
+        birthDay = fake.date_between_dates(datetime.date(1940,1,1),datetime.date(2001,1,1)).strftime('%Y-%m-%d')
+        natId = birthDay.replace("-", "") + "-" + fake.ssn()[-4:]
 
         natId =  birthDay.strftime("%Y%m%d-") + fake.ssn()[-4:]
         consentToContact = getConsentToContact()
