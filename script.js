@@ -12,5 +12,6 @@ const showTable = function(moviesArray){
 fetch('data.json')
     .then((response) => response.json())
     .then((json) => {
-        showTable(json)
+        const filtered = json.filter(item => item.ConsentToContact);
+        showTable(filtered);
     });
